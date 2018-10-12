@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html lang="en">
+	<head>
+		<meta name="author" content="Anne de Groot">
+		<title>Anne de Groot</title>
+		<link rel="stylesheet" href="./css/bootstrap.min.css">
+		<link rel="stylesheet" href="./css/bootstrapCustom.css">
+		<script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+		
+	</head>
+	
+	<body>
+		<div id="navbarplaceholder"></div>
+		
+		<div id="jumbotronplaceholder"></div>
+
+	<script type="text/javascript">
+		jQuery(document).ready(function() {
+			$("#navbarplaceholder").load("components/navbar.html", function() {
+				$("#nav-link-programming").addClass("active");
+			});
+			
+			$("#jumbotronplaceholder").load("components/jumbotron.html", function() {
+				$("#jumbotron-title").html("I'm a programmer");
+				$("#jumbotron-undertitle").html("I like to create things");
+				$("#jumbotron-container").addClass("programming-jumbotron");
+			});
+		});
+		
+	</script>
+	
+	</body>
+</html>
