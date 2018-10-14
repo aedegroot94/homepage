@@ -4,16 +4,61 @@
 		<meta name="author" content="Anne de Groot">
 		<title>Anne de Groot</title>
 		<link rel="stylesheet" href="./css/bootstrap.min.css">
-		<link rel="stylesheet" href="./css/bootstrapCustom.css">
-		<script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
-		
+		<link rel="stylesheet" href="./css/bootstrapCustom.css">	
 	</head>
 	
 	<body>
 		<div id="navbarplaceholder"></div>
 		
 		<div id="jumbotronplaceholder"></div>
-
+		
+		<div class="page-content">
+			<div class="container">
+				<form id="contact-form" method="post" action="contact.php" role="form">
+					<div class="messages"></div>
+					<div class="controls">
+						<div class="row">
+							<div class="col-md-8">
+								<div class="form-group">
+									<label for="form_name">Name</label>
+									<input id="form_name" type="text" name="name" placeholder="Name..." class="form-control" required="required" data-error="Name is a required field.">
+									<div class="help-block with-errors text-danger"></div>
+								</div>
+							
+								<div class="form-group">
+									<label for="form_email">Email</label>
+									<input id="form_email" type="email" name="email" placeholder="You don't have to fill in an email address, but if you don't, I can't contact you back." class="form-control" data-error="Email address is not valid.">
+									<div class="help-block with-errors text-danger"></div>
+								</div>
+							
+								<div class="form-group">
+									<label for="form_message">Message</label>
+									<textarea id="form_message" name="message" placeholder="Message..." class="form-control" rows="4" required="required" data-error="Message is a required field."></textarea>
+									<div class="help-block with-errors text-danger"></div>
+								</div>
+							
+								<input type="submit" class="btn btn-success btn-send" value="Submit">
+							
+							</div>
+							<div class="col-md-4">
+								<h2>Or contact me here:</h2>
+								<ul>
+									<li><a href="https://www.facebook.com/aedegroot">Facebook</a></li>
+									<li><a href="https://www.linkedin.com/in/aedegroot/">LinkedIn</a></li>
+									<li><a href="mailto:anne@aedegroot.nl">Email</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+		<div id="footerplaceholder"></div>
+			
+	<script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.9/validator.js"></script>
 	<script type="text/javascript">
 		jQuery(document).ready(function() {
 			$("#navbarplaceholder").load("components/navbar.html", function() {
@@ -25,8 +70,38 @@
 				$("#jumbotron-undertitle").html("Let me hear your thoughts");
 				$("#jumbotron-container").addClass("contact-jumbotron");
 			});
+			
+			$("#footerplaceholder").load("components/footer.html");
 		});
 		
+		$(function () {
+
+    $('#contact-form').validator();
+
+
+    // when the form is submitted
+    $('#contact-form').on('submit', function (event) {
+        if (!event.isDefaultPrevented()) {
+            $.ajax({
+                type: "POST",
+                url: "contact.php",
+                data: $(this).serialize(),
+                success: function (data) {
+                    var messageAlert = 'alert-' + data.type;
+                    var messageText = data.message;
+
+                    var alertBox = '<div class="alert ' + messageAlert + ' alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' + messageText + '</div>';
+                    
+                    if (messageAlert && messageText) {
+                        $('#contact-form').find('.messages').html(alertBox);
+                        $('#contact-form')[0].reset();
+                    }
+                }
+            });
+            return false;
+        }
+    })
+});
 	</script>
 	
 	</body>

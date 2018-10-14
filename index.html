@@ -13,6 +13,13 @@
 		<div id="navbarplaceholder"></div>
 		
 		<div id="jumbotronplaceholder"></div>
+		<div class="page-content">
+			<div class="container">
+				<h2>Welcome to my brand new home page! </h2>
+				<p>The site is still under construction but all pages have some content for you to see. You can use the buttons at the top of the page to navigate to other pages. If you have any feedback or notice any bugs, feel free to leave me a message using the contact form!</p>
+			</div>
+		</div>
+		<div id="footerplaceholder"></div>
 
 	<script type="text/javascript">
 		jQuery(document).ready(function() {
@@ -25,6 +32,8 @@
 				$("#jumbotron-undertitle").html("I made a site");
 				$("#jumbotron-container").addClass("home-jumbotron");
 			});
+			
+			$("#footerplaceholder").load("components/footer.html");
 		});
 		
 	</script>
