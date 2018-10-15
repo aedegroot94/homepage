@@ -24,13 +24,13 @@ html {
 	height: 60px;
 }
 
-.navbar>.nav>.nav-item>.nav-link {
-	color: PapayaWhip;
+.nav-link {
+	color: PapayaWhip!important;
 }	
 
-.navbar>.nav>.nav-item>.active {
-	background-color: PapayaWhip;
-	color: black;
+.active {
+	background-color: PapayaWhip!important;
+	color: black!important;
 }
 
 .text-light{
@@ -47,6 +47,10 @@ html {
 
 .text-danger{
 	color: darkred!important;
+}
+
+.background-light{
+	color: PapayaWhip!important;
 }
 
 .home-jumbotron{
@@ -92,4 +96,15 @@ html {
 	height: 300px;
 }
 
+.coverimage {
+	background-image: linear-gradient(rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.5)), url(../images/desk.jpg);
+	background-color: #343a40;
+	background-repeat: no-repeat;
+	background-position: left top;
+	background-attachment: fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
 

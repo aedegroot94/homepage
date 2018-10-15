@@ -9,16 +9,19 @@
 		
 	</head>
 	
-	<body>
+	<body class="coverimage">
 		<div id="navbarplaceholder"></div>
+		
 		
 		<div id="jumbotronplaceholder"></div>
 		<div class="page-content">
 			<div class="container">
-				<h2>Welcome to my brand new home page! </h2>
-				<p>The site is still under construction but all pages have some content for you to see. You can use the buttons at the top of the page to navigate to other pages. If you have any feedback or notice any bugs, feel free to leave me a message using the contact form!</p>
+				<h2 class="text-light">Welcome to my brand new home page! </h2>
+				<p class="lead text-light">The site is still under construction but all pages have some content for you to see. You can use the buttons at the top of the page to navigate to other pages, or use the big button under this text to get started! If you have any feedback or notice any bugs, feel free to leave me a message using the contact form :).</p>
+				<p class="lead"><a href="aboutme.html" class="btn btn-lg btn-light">Visit 'About Me'</a></p>
 			</div>
 		</div>
+	
 		<div id="footerplaceholder"></div>
 
 	<script type="text/javascript">
@@ -27,11 +30,11 @@
 				$("#nav-link-home").addClass("active");
 			});
 			
-			$("#jumbotronplaceholder").load("components/jumbotron.html", function() {
-				$("#jumbotron-title").html("Welcome");
-				$("#jumbotron-undertitle").html("I made a site");
-				$("#jumbotron-container").addClass("home-jumbotron");
-			});
+			//$("#jumbotronplaceholder").load("components/jumbotron.html", function() {
+			//	$("#jumbotron-title").html("Welcome");
+			//	$("#jumbotron-undertitle").html("I made a site");
+			//	$("#jumbotron-container").addClass("home-jumbotron");
+			//});
 			
 			$("#footerplaceholder").load("components/footer.html");
 		});
